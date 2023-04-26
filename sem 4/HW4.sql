@@ -44,5 +44,10 @@ WHERE MARK = 'BMW'
 UNION SELECT 'ПРОЧИЕ', COUNT(*) FROM AUTO
 WHERE MARK != 'BMW';
 
+SELECT AUTO.MARK, COUNT(*) AS 'TOTAL',
+(select COUNT(*) FROM AUTO) - 
+COUNT(MARK) as 'Other' FROM AUTO
+group by MARK;
+
 -- 3
 SELECT * FROM test_a LEFT JOIN test_b USING(id) WHERE test_b.id IS NULL;
